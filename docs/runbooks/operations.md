@@ -60,18 +60,19 @@ reviewed data in `schema/llm-models.yaml`, not code. The current order
 
 1. Gemma 4 31B · 2. Gemma 4 26B — 30 RPM, 14,400 RPD, 16K TPM each
 3. Gemini 3.1 Flash Lite · 4. Gemini 3.5 Flash Lite — 15 RPM, 500 RPD, 250K TPM
-5. Gemini 3.8 Flash · 6. 3.6 Flash · 7. 3.7 Flash · 8. 3.5 Flash · 9. 2.5 Flash
-   — 5 RPM, 20 RPD · 10. Gemini 2.5 Flash Lite — 10 RPM, 20 RPD
-11. Groq `allam-2-7b` — 30 RPM, 7,000 RPD, 6K TPM
-12. `openai/gpt-oss-120b` · 13. `openai/gpt-oss-20b` · 14. `qwen/qwen3.8-27b`
+5. Gemini 3.8 Flash · 6. 3.6 Flash · 7. 3.7 Flash · 8. 3.5 Flash
+   — 5 RPM, 20 RPD
+9. Groq `allam-2-7b` — 30 RPM, 7,000 RPD, 6K TPM
+10. `openai/gpt-oss-120b` · 11. `openai/gpt-oss-20b` · 12. `qwen/qwen3.8-27b`
     — 30 RPM, 1,000 RPD, 8K TPM
 
 Groq's safety classifiers (`llama-prompt-guard-2-*`, `gpt-oss-safeguard-20b`)
 are excluded and cannot be declared. Observed on 2026-10-07: `allam-2-7b` is
 blocked for the Groq project until enabled under *console.groq.com → Settings →
-Project → Limits*, and Google reports `gemini-2.5-flash` /
-`gemini-2.5-flash-lite` as no longer available to new users; validation retires
-them automatically and the reports say why. To change a limit or the order, edit the
+Project → Limits*; validation retires it automatically and the reports say
+why. Gemini 2.5 Flash and 2.5 Flash Lite were removed from the catalog in 3.0.1:
+Google answers both with `404` *"no longer available to new users"*, so they
+could only ever spend a probe per quota day. To change a limit or the order, edit the
 catalog and update `verified_on`; to add a model, add its display name (Google)
 or exact id (Groq). The API id is always resolved from the live `/models`
 listing, so a name the API does not list shows up as `unresolved` in the

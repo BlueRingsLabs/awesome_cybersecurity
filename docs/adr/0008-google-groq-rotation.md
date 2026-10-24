@@ -122,12 +122,14 @@ Priority order, as verified on 2026-10-07:
 | 6 | Google | Gemini 3.6 Flash | 5 | 20 | 250K |
 | 7 | Google | Gemini 3.7 Flash | 5 | 20 | 250K |
 | 8 | Google | Gemini 3.5 Flash | 5 | 20 | 250K |
-| 9 | Google | Gemini 2.5 Flash | 5 | 20 | 250K |
-| 10 | Google | Gemini 2.5 Flash Lite | 10 | 20 | 250K |
-| 11 | Groq | `allam-2-7b` | 30 | 7,000 | 6K (500K TPD) |
-| 12 | Groq | `openai/gpt-oss-120b` | 30 | 1,000 | 8K (200K TPD) |
-| 13 | Groq | `openai/gpt-oss-20b` | 30 | 1,000 | 8K (200K TPD) |
-| 14 | Groq | `qwen/qwen3.8-27b` | 30 | 1,000 | 8K (200K TPD) |
+| 9 | Groq | `allam-2-7b` | 30 | 7,000 | 6K (500K TPD) |
+| 10 | Groq | `openai/gpt-oss-120b` | 30 | 1,000 | 8K (200K TPD) |
+| 11 | Groq | `openai/gpt-oss-20b` | 30 | 1,000 | 8K (200K TPD) |
+| 12 | Groq | `qwen/qwen3.8-27b` | 30 | 1,000 | 8K (200K TPD) |
+
+Gemini 2.5 Flash (5 RPM, 20 RPD) and Gemini 2.5 Flash Lite (10 RPM, 20 RPD)
+were declared at positions 9 and 10 in 3.0.0 and removed in 3.0.1; see the
+standing observations below.
 
 ### Pre-flight
 
@@ -252,8 +254,11 @@ The runs found five defects, each now fixed and covered by a regression test:
 Standing observations, recorded in the run reports:
 
 - `gemini-2.5-flash` and `gemini-2.5-flash-lite` answer *"no longer available
-  to new users"* (404). They are kept in the catalog, because that is how the
-  dashboard lists them, and are retired by validation once per day.
+  to new users"* (404). They were first kept in the catalog, because that is
+  how the dashboard lists them, and retired by validation once per day. In
+  3.0.1 they were removed: the dashboard keeps showing a quota the API will
+  never serve to this project, so declaring them only spent a probe per day
+  and added noise to every report.
 - `allam-2-7b` stays unusable until it is enabled in the Groq project
   settings (console → Settings → Project → Limits).
 
