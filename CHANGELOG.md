@@ -4,6 +4,16 @@ All notable changes to this project are documented here. The format follows
 [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and the project aims to
 follow [Semantic Versioning](https://semver.org/).
 
+## [3.0.1] - 2026-10-24
+
+### Removed
+
+- **Gemini 2.5 Flash and Gemini 2.5 Flash Lite** are no longer declared in
+  `schema/llm-models.yaml`. Google answers both with `404` *"no longer
+  available to new users"*; every pre-flight and run since 3.0.0 retired them
+  at validation, so they only spent a probe per quota day. The catalog now
+  declares twelve models: eight Google, four Groq.
+
 ## [3.0.0] - 2026-10-07
 
 Google AI Studio + Groq with per-model rotation, pre-flight verification and
